@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/public/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 88);
@@ -9839,10 +9839,9 @@ var App = function (_React$Component) {
   }
 
   _createClass(App, [{
-    key: '__handleClick',
-    value: function __handleClick() {
-      console.log('I was clicked!');
-      alert("I was clicked!");
+    key: 'handleClick',
+    value: function handleClick() {
+      alert();
     }
   }, {
     key: 'render',
@@ -9879,11 +9878,11 @@ var App = function (_React$Component) {
             ),
             _react2.default.createElement(
               'button',
-              { onClick: this.__handleClick.bind(this) },
-              'Click Me'
+              { onClick: this.handleClick },
+              'Click me'
             )
           ),
-          _react2.default.createElement('script', { type: 'javascript', src: '/bundle.js' })
+          _react2.default.createElement('script', { src: '/bundle.js' })
         )
       );
     }
@@ -9925,7 +9924,7 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_App2.default, document);
+_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document);
 
 /***/ }),
 /* 89 */

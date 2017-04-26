@@ -4,9 +4,8 @@ class App extends React.Component {
   constructor() {
       super()
   }
-  __handleClick() {
-    console.log('I was clicked!')
-    alert("I was clicked!")
+  handleClick() {
+    alert()
   }
   render() {
     console.log('hello from App')
@@ -20,9 +19,9 @@ class App extends React.Component {
           <main>
             <h1>Hello World!</h1>
             <p>This is some text that makes up a paragraph</p>
-            <button onClick={this.__handleClick.bind(this)}>Click Me</button>
+            <button onClick={this.handleClick}>Click me</button>
           </main>
-          <script type="javascript" src="/bundle.js" />
+          <script src="/bundle.js" />
         </body>
       </html>
     )

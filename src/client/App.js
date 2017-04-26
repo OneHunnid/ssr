@@ -8,19 +8,21 @@ class App extends React.Component {
     alert()
   }
   render() {
-    console.log('hello from App')
     return (
       <html>
         <head>
-          <title>Example SSR App</title>
+          <title>{this.props.title}</title>
           <link rel="stylesheet" href="/style.css" />
         </head>
         <body>
           <main>
-            <h1>Hello World!</h1>
+            <h1>{this.props.title}</h1>
             <p>This is some text that makes up a paragraph</p>
             <button onClick={this.handleClick}>Click me</button>
           </main>
+          <script dangerouslySetInnerHTML={{
+            __html: 'window.PROPS=' + JSON.stringify(this.props)
+          }} />
           <script src="/bundle.js" />
         </body>
       </html>

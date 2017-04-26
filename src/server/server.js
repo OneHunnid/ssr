@@ -8,8 +8,10 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
+  const props = {title: 'Universal React'}
+
   const html = ReactDOMServer.renderToString(
-    <App />
+    <App {...props} />
   );
   res.send(html)
 })

@@ -9839,50 +9839,52 @@ var App = function (_React$Component) {
   }
 
   _createClass(App, [{
-    key: 'handleClick',
+    key: "handleClick",
     value: function handleClick() {
       alert();
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      console.log('hello from App');
       return _react2.default.createElement(
-        'html',
+        "html",
         null,
         _react2.default.createElement(
-          'head',
+          "head",
           null,
           _react2.default.createElement(
-            'title',
+            "title",
             null,
-            'Example SSR App'
+            this.props.title
           ),
-          _react2.default.createElement('link', { rel: 'stylesheet', href: '/style.css' })
+          _react2.default.createElement("link", { rel: "stylesheet", href: "/style.css" })
         ),
         _react2.default.createElement(
-          'body',
+          "body",
           null,
           _react2.default.createElement(
-            'main',
+            "main",
             null,
             _react2.default.createElement(
-              'h1',
+              "h1",
               null,
-              'Hello World!'
+              this.props.title
             ),
             _react2.default.createElement(
-              'p',
+              "p",
               null,
-              'This is some text that makes up a paragraph'
+              "This is some text that makes up a paragraph"
             ),
             _react2.default.createElement(
-              'button',
+              "button",
               { onClick: this.handleClick },
-              'Click me'
+              "Click me"
             )
           ),
-          _react2.default.createElement('script', { src: '/bundle.js' })
+          _react2.default.createElement("script", { dangerouslySetInnerHTML: {
+              __html: 'window.PROPS=' + JSON.stringify(this.props)
+            } }),
+          _react2.default.createElement("script", { src: "/bundle.js" })
         )
       );
     }
@@ -9924,7 +9926,9 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document);
+var props = window.PROPS;
+
+_reactDom2.default.render(_react2.default.createElement(_App2.default, props), document);
 
 /***/ }),
 /* 89 */

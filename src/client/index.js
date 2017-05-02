@@ -1,10 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router';
+
 import App from './App'
 
 const props = window.PROPS;
 
 ReactDOM.render(
-  <App {...props}/>,
+  <BrowserRouter>
+    <App {...props} />
+  </BrowserRouter>,
   document
 );

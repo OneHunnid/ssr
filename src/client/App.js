@@ -1,11 +1,10 @@
 import React from 'react'
+// import Main from './Main'
+import Home from './Home'
 
 class App extends React.Component {
   constructor() {
       super()
-  }
-  handleClick() {
-    alert()
   }
   render() {
     return (
@@ -16,9 +15,7 @@ class App extends React.Component {
         </head>
         <body>
           <main>
-            <h1>{this.props.title}</h1>
-            <p>This is some text that makes up a paragraph</p>
-            <button onClick={this.handleClick}>Click me</button>
+            <Home />
           </main>
           <script dangerouslySetInnerHTML={{
             __html: 'window.PROPS=' + JSON.stringify(this.props)

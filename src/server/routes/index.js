@@ -8,13 +8,13 @@ import App from '../../client/App'
 const router = Router();
 
 router.get('*', function(request, response) {
-
+  const props = {title: 'Universal React'}
   const context = {}
 
   const html = ReactDOMServer.renderToString(
-    <StaticRouter location={request.url} context={context}>
-      <App/>
-    </StaticRouter>
+    // <StaticRouter location={request.url} context={context}>
+      <App {...props}/>
+    // </StaticRouter>
   );
 
   if (context.url) {
@@ -23,7 +23,8 @@ router.get('*', function(request, response) {
     })
     response.end()
   } else {
-    response.write(html)
+    // console.log('ELSE CONTEXT Status: ' + context.status);
+    response.send(html)
     response.end()
   }
 });

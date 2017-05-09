@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import { StaticRouter } from 'react-router'
+import { StaticRouter } from 'react-router-dom'
 
 import App from '../../client/App'
 
@@ -12,9 +12,9 @@ router.get('*', function(request, response) {
   const context = {}
 
   const html = ReactDOMServer.renderToString(
-    // <StaticRouter location={request.url} context={context}>
+    <StaticRouter location={request.url} context={context}>
       <App {...props}/>
-    // </StaticRouter>
+    </StaticRouter>
   );
 
   if (context.url) {
@@ -23,7 +23,6 @@ router.get('*', function(request, response) {
     })
     response.end()
   } else {
-    // console.log('ELSE CONTEXT Status: ' + context.status);
     response.send(html)
     response.end()
   }

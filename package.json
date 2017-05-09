@@ -27,6 +27,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "express": "^4.15.2",
+    "history": "^4.6.1",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "react": "^15.5.3",

@@ -1,11 +1,12 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom';
 
 import Header from './Header'
 import Routes from './Routes'
 
 class App extends React.Component {
   constructor() {
-      super()
+    super()
   }
   render() {
     return (
@@ -15,8 +16,10 @@ class App extends React.Component {
           <link rel="stylesheet" href="/style.css" />
         </head>
         <body>
-          <Header />
-          <Routes />
+          <main>
+            <Header />
+            <Routes />
+          </main>
           <script dangerouslySetInnerHTML={{
             __html: 'window.PROPS=' + JSON.stringify(this.props)
           }} />

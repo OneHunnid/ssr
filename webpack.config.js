@@ -1,13 +1,23 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/client/index.js',
+  entry: [
+          './src/client/index',
+          './public/styles/index.scss'
+        ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
     publicPath: '/public/'
   },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: 'bundle.css',
+      allChunks: true
+    })
+  ],
   module: {
     rules: [
       {
@@ -23,6 +33,13 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       }
     ]
   }

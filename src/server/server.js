@@ -4,7 +4,7 @@ import router from './routes/index.js'
 const app = express();
 
 app.use(express.static('public'));
-app.use(router)
+app.use(router);
 
 const PORT = 3000;
 app.listen(PORT, function(){

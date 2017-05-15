@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack -p --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/webpack --config webpack.config.js && node -r babel-core/register src/server/server.js"
   },
@@ -34,7 +35,8 @@
     "react-dom": "^15.5.3",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "yargs": "^8.0.1"
   },
   "devDependencies": {
     "css-loader": "^0.28.1",

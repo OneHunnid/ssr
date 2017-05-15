@@ -2,18 +2,38 @@ import { Router } from 'express'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
+import webpackDevMiddleware from "webpack-dev-middleware"
+import webpackHotMiddleware from "webpack-hot-middleware"
+import webpack from "webpack"
 
-import App from '../../client/App'
+import webpackConfig from "../../../webpack.config"
+// import App from '../../client/App'
 
+const compiler = webpack(webpackConfig)
 const router = Router();
 
+router.use(webpackDevMiddleware(compiler, {
+  publicPath: webpackConfig.output.publicPath,
+}))
+
+router.use(webpackHotMiddleware(compiler))
+
 router.get('*', function(request, response) {
-  const props = {title: 'Universal React'}
+  // const props = {title: 'Universal React'}
   const context = {}
 
   const html = ReactDOMServer.renderToString(
     <StaticRouter location={request.url} context={context}>
-      <App {...props}/>
+      <html>
+        <head>
+          <title>React SSR</title>
+          <link rel="stylesheet" href="/bundle.css" />
+        </head>
+        <body>
+          <div id="root"></div>
+          <script src="/bundle.js" />
+        </body>
+      </html>
     </StaticRouter>
   );
 

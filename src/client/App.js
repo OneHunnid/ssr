@@ -10,22 +10,10 @@ class App extends React.Component {
   }
   render() {
     return (
-      <html>
-        <head>
-          <title>{this.props.title}</title>
-          <link rel="stylesheet" href="/bundle.css" />
-        </head>
-        <body>
-          <main>
-            <Header />
-            <Routes />
-          </main>
-          <script dangerouslySetInnerHTML={{
-            __html: 'window.PROPS=' + JSON.stringify(this.props)
-          }} />
-          <script src="/bundle.js" />
-        </body>
-      </html>
+      <main>
+        <Header />
+        <Routes />
+      </main>
     )
   }
 }

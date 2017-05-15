@@ -1,14 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom';
+import { AppContainer } from 'react-hot-loader'
 
 import App from './App'
 
-const props = window.PROPS;
+// const props = window.PROPS;
+const root = document.querySelector('#root');
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App {...props} />
-  </BrowserRouter>,
-  document
-);
+const render = (Component) => {
+  ReactDOM.render(
+    <BrowserRouter>
+      <AppContainer>
+        <App />
+      </AppContainer>
+    </BrowserRouter>,
+    root
+  );
+};
+
+render(App)
+
+if (module.hot) {
+  module.hot.accept();
+}

@@ -4,16 +4,26 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-          './src/client/index',
-          './src/client/utils/index',
-          './src/client/styles/index.scss'
-        ],
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
+    './src/client/index',
+    './src/client/utils/index',
+    './src/client/styles/index.scss'
+  ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
     publicPath: '/public/'
   },
+  devServer: {
+    hot: true,
+    contentBase: path.resolve(__dirname, 'public'),
+    publicPath: (__dirname, 'public')
+  },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NamedModulesPlugin(),
     new ExtractTextPlugin({
       filename: 'bundle.css',
       allChunks: true

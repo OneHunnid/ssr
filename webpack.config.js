@@ -1,24 +1,58 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var argv = require('yargs').argv;
+
+const config = {};
+
+// This configured production
+if (argv.p) {
+    config.entry = [
+      './src/client/scripts/index',
+      './src/client/scripts/utils/index',
+      './src/client/styles/index.scss'
+    ]
+    config.plugins = [
+      new ExtractTextPlugin({
+        filename: 'bundle.css',
+        allChunks: true
+      }),
+    ]
+}
+else {
+  config.entry = [
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
+    './src/client/scripts/index',
+    './src/client/scripts/utils/index',
+    './src/client/styles/index.scss'
+  ]
+  config.plugins = [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin({
+      filename: 'bundle.css',
+      allChunks: true,
+      disable: true
+    })
+  ]
+}
 
 module.exports = {
-  entry: [
-          './src/client/index',
-          './src/client/utils/index',
-          './src/client/styles/index.scss'
-        ],
+  entry: config.entry,
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
     publicPath: '/public/'
   },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: 'bundle.css',
-      allChunks: true
-    })
-  ],
+  devtool: 'inline-source-map',
+  devServer: {
+    hot: true,
+    contentBase: path.resolve(__dirname, 'public'),
+    publicPath: (__dirname, 'public')
+  },
+  plugins: config.plugins,
   module: {
     rules: [
       {
@@ -38,9 +72,9 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+                  fallback: 'style-loader',
+                  use: ['css-loader', 'sass-loader']
+                })
       }
     ]
   }

@@ -7,7 +7,7 @@ import webpackHotMiddleware from "webpack-hot-middleware"
 import webpack from "webpack"
 
 import webpackConfig from "../../../webpack.config"
-// import App from '../../client/App'
+import App from '../../client/scripts/App'
 
 const compiler = webpack(webpackConfig)
 const router = Router();
@@ -19,7 +19,7 @@ router.use(webpackDevMiddleware(compiler, {
 router.use(webpackHotMiddleware(compiler))
 
 router.get('*', function(request, response) {
-  // const props = {title: 'Universal React'}
+  const props = {title: 'Universal React'}
   const context = {}
 
   const html = ReactDOMServer.renderToString(
@@ -30,7 +30,9 @@ router.get('*', function(request, response) {
           <link rel="stylesheet" href="/bundle.css" />
         </head>
         <body>
-          <div id="root"></div>
+          <div id="root">
+            <App />
+          </div>
           <script src="/bundle.js" />
         </body>
       </html>

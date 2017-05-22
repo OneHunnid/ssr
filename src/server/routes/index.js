@@ -31,8 +31,11 @@ router.get('*', function(request, response) {
         </head>
         <body>
           <div id="root">
-            <App />
+            <App {...props}/>
           </div>
+          <script dangerouslySetInnerHTML={{
+            __html: 'window.PROPS=' + JSON.stringify(props)
+          }} />
           <script src="/bundle.js" />
         </body>
       </html>

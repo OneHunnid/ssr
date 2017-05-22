@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <main>
         <Header />
-        <Routes />
+        <Routes {...this.props}/>
       </main>
     )
   }

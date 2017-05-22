@@ -10,7 +10,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>HOME</h1>
+        <h1>{this.props.title}</h1>
         <p>This is some text that makes up a paragraph</p>
         <button onClick={this.handleClick}>Click me</button>
       </div>

@@ -6,14 +6,14 @@ import { AppContainer } from 'react-hot-loader'
 import App from './App'
 import '../styles/index.scss'
 
-// const props = window.PROPS;
+const props = window.PROPS;
 const root = document.querySelector('#root');
 
 const render = (Component) => {
   ReactDOM.render(
     <BrowserRouter>
       <AppContainer>
-        <App />
+        <App {...props}/>
       </AppContainer>
     </BrowserRouter>,
     root

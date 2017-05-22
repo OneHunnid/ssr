@@ -31,7 +31,9 @@ router.get('*', function(request, response) {
         </head>
         <body>
           <div id="root">
-            <App {...props}/>
+            <div>
+              <App {...props}/>
+            </div>
           </div>
           <script dangerouslySetInnerHTML={{
             __html: 'window.PROPS=' + JSON.stringify(props)
